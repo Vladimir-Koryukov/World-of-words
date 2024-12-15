@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="../auth/auth.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="logo">
+            <span class="letter-w">W</span>
+            <span class="letter-w overlay">W</span>
+        </a>
+        <div class="selected-avatar">
+            <img src="../assets/images/base-avatar.png" alt="Аватар" id="user-avatar">
+        </div>
+    </header>
+    <main>
+        <div class="auth-container">
+            <h1>Пожалуйста, авторизуйтесь и настройте игру для своего удобства</h1>
+            <form id="auth-form">
+                <div class="form-group">
+                    <label for="username">Имя пользователя:</label>
+                    <input type="text" id="username" name="username" required placeholder="Введите имя">
+                </div>
+                <div class="form-group">
+                    <label>Выберите аватар:</label>
+                    <div class="avatar-grid">
+                        <div class="avatar-row">
+                            <img src="../assets/images/cat.png" alt="Аватар 1" class="avatar" data-avatar="1">
+                            <img src="../assets/images/dog.png" alt="Аватар 2" class="avatar" data-avatar="2">
+                            <img src="../assets/images/cow.png" alt="Аватар 3" class="avatar" data-avatar="3">
+                            <img src="../assets/images/elephant.png" alt="Аватар 4" class="avatar" data-avatar="4">
+                            <img src="../assets/images/frog.png" alt="Аватар 5" class="avatar" data-avatar="5">
+                        </div>
+                        <div class="avatar-row avatar-offset">
+                            <img src="../assets/images/monkey.png" alt="Аватар 6" class="avatar" data-avatar="6">
+                            <img src="../assets/images/panda.png" alt="Аватар 7" class="avatar" data-avatar="7">
+                            <img src="../assets/images/pig.png" alt="Аватар 8" class="avatar" data-avatar="8">
+                            <img src="../assets/images/rabbit.png" alt="Аватар 9" class="avatar" data-avatar="9">
+                        </div>
+                    </div>                    
+                </div>
+                <div class="form-group">
+                    <label>Выберите фон:</label>
+                    <div class="backgrounds">
+                        <div class="bg-option" data-bg="bg1" style="background: linear-gradient(to right, #6a11cb, #2575fc);"></div>
+                        <div class="bg-option" data-bg="bg2" style="background: linear-gradient(to right, #ff7e5f, #feb47b);"></div>
+                        <div class="bg-option" data-bg="bg3" style="background: linear-gradient(to right, #43cea2, #185a9d);"></div>
+                        <div class="bg-option" data-bg="bg4" style="background: linear-gradient(to right, #ff9966, #ff5e62);"></div>
+                        <div class="bg-option" data-bg="bg5" style="background: linear-gradient(to right, #11998e, #38ef7d);"></div>
+                    </div>
+                </div>
+                <button type="submit" id="continue-btn">Продолжить</button>
+            </form>
+        </div>
+    </main>
+    <script src="../auth/auth.js"></script>
+</body>
+</html>

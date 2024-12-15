@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+}
+
+.logo .letter-w {
+    color: #ffa600;
+}
+
+.logo .letter-w.overlay {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    color: #ffdd00;
+}
+
+.selected-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    object-fit: cover;
+}
+
+.auth-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.avatar-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.avatar {
+    width: 90px; /* Уменьшаем ширину */
+    height: 90px; /* Уменьшаем высоту */
+    border-radius: 50%;
+    object-fit: cover; /* Гарантируем, что изображение полностью поместится в круг */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Добавляем плавный эффект при взаимодействии */
+}
+
+.avatar-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.avatar-offset {
+    justify-content: space-evenly;
+}
+
+.avatar:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.backgrounds {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.bg-option {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.bg-option:hover {
+    transform: scale(1.2);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background: #ffdd00;
+    border: none;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ffe066;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Классический режим - Уровень 1</title>
+    <link rel="stylesheet" href="../level1-classic/level1-classic.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="logo">
+            <span class="letter-w">W</span>
+            <span class="letter-w overlay">W</span>
+        </a>
+        <div class="selected-avatar">
+            <img src="../assets/images/base-avatar.png" id="user-avatar" alt="Avatar">
+        </div>
+        <div class="user-info">
+            <a href="../ranking/ranking.html" class="ranking-link">
+                <img src="../assets/images/trophy-icon.png" alt="Ranking" class="ranking-icon">
+            </a>
+            <span class="user-score">Рейтинг: <span id="user-score">0</span></span>
+        </div>
+    </header>
+    <main>
+        <div class="task-container">
+            <div class="task-header">
+                <div id="score">
+                    <p>Количество очков: <span id="score-value">0</span></p>
+                </div>
+                <div id="timer">
+                    Оставшееся время: <span id="time-left">60</span> секунд
+                </div>
+            </div>
+            <h1> <span id="task-word"></span></h1>
+            <div class="word-bank" id="word-bank"></div>
+        </div>
+    </main>
+    <!-- Модальное окно для неправильного ответа -->
+    <div id="retry-modal" class="modal">
+        <div class="modal-content">
+            <h2>Ваш результат</h2>
+            <p>Количество очков: <span id="current-score"></span></p>
+            <button id="restart-button">Начать сначала</button>
+            <button id="menu-button">Выйти в меню</button>
+        </div>
+    </div>
+    <div id="pause-button" class="pause-button">||</div>
+
+    <div id="pause-modal" class="modal pause-modal">
+        <div class="modal-content">
+            <h2>Игра на паузе</h2>
+            <button id="resume-button" class="modal-button">Продолжить игру</button>
+            <button id="restart-button-pause" class="modal-button">Начать сначала</button>
+            <button id="settings-button" class="modal-button">Настройки</button>
+            <button id="levels-button" class="modal-button">Вернуться к уровням</button>
+        </div>
+    </div> 
+    <div id="settings-modal" class="modal settings-modal">
+        <div class="modal-content">
+            <h2>Настройки</h2>
+            <div class="form-group">
+                <label>Выберите фон:</label>
+                <div class="backgrounds">
+                    <div class="bg-option" data-bg="bg1" style="background: linear-gradient(to right, #6a11cb, #2575fc);"></div>
+                    <div class="bg-option" data-bg="bg2" style="background: linear-gradient(to right, #ff7e5f, #feb47b);"></div>
+                    <div class="bg-option" data-bg="bg3" style="background: linear-gradient(to right, #43cea2, #185a9d);"></div>
+                    <div class="bg-option" data-bg="bg4" style="background: linear-gradient(to right, #ff9966, #ff5e62);"></div>
+                    <div class="bg-option" data-bg="bg5" style="background: linear-gradient(to right, #11998e, #38ef7d);"></div>
+                </div>
+            </div>
+            <button id="close-settings" class="modal-button">Закрыть</button>
+        </div>
+    </div>
+      
+    <script src="../level1-limitedTime/level1-limitedTime.js"></script>
+</body>
+</html>

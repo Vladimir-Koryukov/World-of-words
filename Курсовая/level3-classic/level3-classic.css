@@ -1,0 +1,429 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+}
+
+.logo .letter-w {
+    color: #ffa600;
+}
+
+.logo .letter-w.overlay {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    color: #ffdd00;
+}
+
+.selected-avatar img, .user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.selected-avatar img {
+    border: 2px solid #fff;
+}
+
+header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Расстояние между значком и текстом */
+}
+
+header .ranking-icon {
+    cursor: pointer;
+}
+
+header .user-score {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.task-header {
+    max-width: 90%;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Отступ от блока с таймером и счетчиком к остальной части */
+}
+
+#score {
+    top: 20px; /* Расстояние от верхней границы */
+    left: 20px; /* Расстояние от левой границы */
+    max-width: 40%;
+    font-size: 20px; /* Увеличиваем размер шрифта */
+    color: #333; /* Цвет шрифта */
+    background-color: rgba(255, 255, 255, 0.8); /* Легкий фон для контраста */
+}
+
+/* Стили для таймера */
+#timer {
+    top: 20px;
+    right: 20px;
+    max-width: 40%;
+    font-size: 20px;
+    color: #333; /* Цвет шрифта */
+    background-color: rgba(255, 255, 255, 0.8); /* Легкий фон для контраста */
+}
+
+/* Дополнительные стили для фона и рамки, если нужно */
+#score, #timer {
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold; /* Делаем шрифт жирным */
+    text-align: center;
+}
+
+.resultButton {
+    display: flex;
+    justify-content: center;
+}
+
+#question-container {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#categories-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+/* Увеличиваем размеры всей корзины */
+.category-block {
+    width: 350px; /* Увеличиваем ширину корзины */
+    padding: 15px;
+    background-color: #f0f8ff;
+    border: 2px dashed #007BFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Расстояние между названием и содержимым */
+}
+
+.category-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Содержимое корзины */
+.category-content {
+    padding: 10px; /* Отступы внутри */
+    background-color: #ffffff;
+    width: 100%; /* Полная ширина */
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; /* Flexbox для расположения слов */
+    flex-wrap: wrap; /* Перенос слов */
+    gap: 10px; /* Расстояние между словами */
+    justify-content: flex-start; /* Выравнивание по левому краю */
+    min-height: 30px; /* Минимальная высота для пустой корзины */
+    height: auto; /* Автоматическая высота для содержимого */
+    transition: height 0.2s ease-in-out; /* Плавное изменение высоты */
+}
+
+/* Добавляем отступы для слов внутри корзины */
+.category-content .word-block {
+    margin: 5px 0;
+}
+
+.word-block {
+    background-color: #ffffff;
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    margin: 5px; /* Добавляем отступы между словами */
+    flex: 0 0 auto; /* Гарантируем, что слова не сжимаются */
+}
+
+.word-block:hover {
+    transform: scale(1.1);
+    background-color: #f0f8ff;
+}
+
+.word-block.correct {
+    background-color: #d4edda; /* Зелёный фон для правильных слов */
+    border-color: #28a745;
+}
+
+.word-block.wrong {
+    background-color: #f8d7da; /* Красный фон для неправильных слов */
+    border-color: #dc3545;
+}
+
+#result-container {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.word-block.locked {
+    pointer-events: none; /* Отключаем взаимодействие */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Стиль для модального окна */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Модальное окно поверх остальных элементов */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+}
+
+.modal h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.modal p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.next-level-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #ffdd00;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.next-level-button:hover {
+    background-color: #ffe066;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Кнопка паузы */
+.pause-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #ffdd00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.pause-button:hover {
+    background-color: #ffa600;
+}
+
+/* Модальное окно паузы */
+.pause-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.pause-modal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pause-modal .modal-button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    color: #000;
+    background-color: #ffdd00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pause-modal .modal-button:hover {
+    background-color: #ffa600;
+}
+
+/* Модальное окно настроек */
+.settings-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-modal .modal-content {
+    background-color: #ffa600;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.settings-modal .form-group {
+    margin-bottom: 15px;
+}
+
+.settings-modal .backgrounds, .settings-modal .color-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.settings-modal .bg-option, .settings-modal .color-option {
+    width: 40px;
+    height: 40px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.settings-modal .bg-option:hover, .settings-modal .color-option:hover {
+    transform: scale(1.1);
+    border-color: #000;
+}
