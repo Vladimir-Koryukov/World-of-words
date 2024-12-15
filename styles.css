@@ -1,0 +1,81 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+}
+
+/*Логотип*/
+header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.logo {
+    display: flex;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    position: relative;
+}
+
+.logo .letter-w {
+    color:#ffa600;
+}
+
+.logo .letter-w.overlay {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    color: #ffdd00;
+}
+
+/*Основная часть*/
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.welcome-container {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 40px 60px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-container h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.welcome-container .highlight {
+    color: #ffdd00;
+}
+
+#start-game-btn {
+    background: #ffdd00;
+    border: 2px solid #ffe066;
+    color: #333;
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#start-game-btn:hover {
+    background: #ffe066;
+    border-color: #ffdd00;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#start-game-btn:active {
+    transform: scale(0.95);
+    background: #ffcc00;
+    border-color: #ffaa00;
+}

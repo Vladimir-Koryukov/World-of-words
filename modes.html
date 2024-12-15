@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выберите режим игры</title>
+    <link rel="stylesheet" href="../modes/modes.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="logo">
+            <span class="letter-w">W</span>
+            <span class="letter-w overlay">W</span>
+        </a>
+        <div class="selected-avatar">
+            <img src="../assets/images/base-avatar.png" id="user-avatar" alt="Avatar">
+        </div>
+        <div class="user-info">
+            <a href="../ranking/ranking.html" class="ranking-link">
+                <img src="../assets/images/trophy-icon.png" alt="Ranking" class="ranking-icon">
+            </a>
+            <span class="user-score">Рейтинг: <span id="user-score">0</span></span>
+        </div>
+    </header>
+    <main>
+        <div class="game-mode-container">
+            <h1>Выберите режим игры</h1>
+            <div class="game-modes">
+                <button class="game-mode-button" id="classic-mode">Классический</button>
+                <button class="game-mode-button" id="first-error-mode">До первой ошибки</button>
+                <button class="game-mode-button" id="max-time-mode">Максимум за ограниченное время</button>
+            </div>
+        </div>
+    </main>
+    <script src="../modes/modes.js"></script>
+</body>
+</html>

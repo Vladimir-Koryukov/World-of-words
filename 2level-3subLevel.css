@@ -1,0 +1,439 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+}
+
+.logo .letter-w {
+    color: #ffa600;
+}
+
+.logo .letter-w.overlay {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    color: #ffdd00;
+}
+
+.selected-avatar img, .user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.selected-avatar img {
+    border: 2px solid #fff;
+}
+
+header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Расстояние между значком и текстом */
+}
+
+header .ranking-icon {
+    cursor: pointer;
+}
+
+header .user-score {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+#maze {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    background-color: #eee;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    gap: 1px;
+}
+
+.avatar {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    background-size: cover;
+    top: 0;
+    left: 0;
+}
+
+.treasure {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url('../assets/images/treasure.png');
+    background-size: cover;
+    top: 560px;
+    left: 560px;
+}
+
+.wall {
+    background-color: #333;
+}
+
+.path {
+    background-color: #fff;
+}
+
+.question {
+    width: 40px; /* Устанавливаем ширину клетки */
+    height: 40px; /* Устанавливаем высоту клетки */
+    display: flex; /* Используем flexbox для центровки содержимого */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    background-color: #978080; /* Цвет фона клетки */
+    border-radius: 10px; /* Закругленные углы */
+    font-size: 30px; /* Размер шрифта */
+    color: #333; /* Цвет текста */
+    font-family: Arial, sans-serif; /* Шрифт */
+}
+  
+.welcome-message {
+    text-align: center; /* Центровка текста */
+    font-size: 20px; /* Размер шрифта */
+    font-weight: bold; /* Полужирный текст */
+    color: #333; /* Цвет текста */
+    margin-bottom: 20px; /* Отступ снизу */
+    font-family: Arial, sans-serif; /* Шрифт */
+    max-width: 600px; /* Ограничение ширины контейнера */
+    margin: 0 auto 20px auto; /* Центровка контейнера с отступом снизу */
+    line-height: 1.5; /* Межстрочный интервал для удобства чтения */
+    word-wrap: break-word; /* Перенос слов на следующую строку */
+}
+
+  /* Для добавления вопросительного знака через content */
+.question::before {
+    content: "?"; /* Добавляем знак вопроса */
+    font-size: 40px; /* Размер знака вопроса */
+    color: #007bff; /* Цвет знака вопроса */
+}
+
+.correct-answer {
+    width: 40px; /* Устанавливаем ширину клетки */
+    height: 40px; /* Устанавливаем высоту клетки */
+    display: flex; /* Используем flexbox для центровки содержимого */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    background-color: #978080; /* Цвет фона клетки */
+    border-radius: 10px; /* Закругленные углы */
+    font-size: 30px; /* Размер шрифта */
+    color: #333; /* Цвет текста */
+    font-family: Arial, sans-serif; /* Шрифт */
+}
+
+.correct-answer::before {
+    content: "✔️"; /* Галочка */
+    font-size: 30px; /* Размер галочки */
+    color: #4caf50; /* Цвет галочки */
+}
+
+.incorrect-answer {
+    width: 40px; /* Устанавливаем ширину клетки */
+    height: 40px; /* Устанавливаем высоту клетки */
+    display: flex; /* Используем flexbox для центровки содержимого */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    background-color: #978080; /* Цвет фона клетки */
+    border-radius: 10px; /* Закругленные углы */
+    font-size: 30px; /* Размер шрифта */
+    color: #333; /* Цвет текста */
+    font-family: Arial, sans-serif; /* Шрифт */
+}
+
+.incorrect-answer::before {
+    content: "❌"; /* Крестик */
+    font-size: 30px; /* Размер крестика */
+    color: #f44336; /* Цвет крестика */
+}
+
+.task-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#score {
+    top: 20px; /* Расстояние от верхней границы */
+    left: 20px; /* Расстояние от левой границы */
+    max-width: 40%;
+    font-size: 20px; /* Увеличиваем размер шрифта */
+    color: #333; /* Цвет шрифта */
+    background-color: rgba(255, 255, 255, 0.8); /* Легкий фон для контраста */
+}
+
+/* Стили для таймера */
+#timer {
+    top: 20px;
+    right: 20px;
+    max-width: 40%;
+    font-size: 20px;
+    color: #333; /* Цвет шрифта */
+    background-color: rgba(255, 255, 255, 0.8); /* Легкий фон для контраста */
+}
+
+/* Дополнительные стили для фона и рамки, если нужно */
+#score, #timer {
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold; /* Делаем шрифт жирным */
+    text-align: center;
+}
+
+.modal {
+    display: none; /* По умолчанию модальное окно скрыто */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#modalQuestion {
+    display: none; /* По умолчанию модальное окно скрыто */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #2575fc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #6a11cb;
+}
+
+.answer-container {
+    display: flex;
+    flex-wrap: wrap; /* Варианты будут переноситься на новую строку */
+    gap: 10px; /* Расстояние между вариантами */
+    justify-content: center; /* Центрируем варианты */
+    padding: 10px;
+}
+
+.answer-block {
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 100px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.answer-block:hover {
+    background-color: #e0e0e0;
+    border-color: #bbb;
+}
+
+.answer-block:active {
+    background-color: #d0d0d0;
+    border-color: #999;
+    transform: scale(0.95);
+}
+
+#answer-options {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+#answer-options div {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+#answer-options div.correct {
+    background-color: #28a745; /* Зеленый для правильного ответа */
+  }
+  
+#answer-options div.incorrect {
+    background-color: #dc3545; /* Красный для неправильного ответа */
+  }
+  
+#close-modal {
+    margin-top: 20px;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+.modal h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.modal p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.next-level-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #ffdd00;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.next-level-button:hover {
+    background-color: #ffe066;
+}
+
+/* Кнопка паузы */
+.pause-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #ffdd00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.pause-button:hover {
+    background-color: #ffa600;
+}
+
+/* Модальное окно паузы */
+.pause-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.pause-modal .modal-content {
+    background-color: #fff;
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pause-modal .modal-button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    color: #000;
+    background-color: #ffdd00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pause-modal .modal-button:hover {
+    background-color: #ffa600;
+}
+
+/* Модальное окно настроек */
+.settings-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-modal .modal-content {
+    background-color: #ffa600;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.settings-modal .form-group {
+    margin-bottom: 15px;
+}
+
+.settings-modal .backgrounds, .settings-modal .color-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.settings-modal .bg-option, .settings-modal .color-option {
+    width: 40px;
+    height: 40px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.settings-modal .bg-option:hover, .settings-modal .color-option:hover {
+    transform: scale(1.1);
+    border-color: #000;
+}
